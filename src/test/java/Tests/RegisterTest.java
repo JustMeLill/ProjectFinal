@@ -13,55 +13,55 @@ public class RegisterTest extends SharedData {
     public void MetodaTest(){
 
 
-        WebElement register = driver.findElement(By.className("ico-register"));
+        WebElement register = getDriver().findElement(By.className("ico-register"));
         register.click();
 
-        WebElement selectGender = driver.findElement(By.id("gender-female"));
+        WebElement selectGender = getDriver().findElement(By.id("gender-female"));
         selectGender.click();
 
-        WebElement firstName = driver.findElement(By.id("FirstName"));
+        WebElement firstName = getDriver().findElement(By.id("FirstName"));
         String firstNameValue = "Liliana";
         firstName.sendKeys(firstNameValue);
 
-        WebElement lastName = driver.findElement(By.id("LastName"));
+        WebElement lastName = getDriver().findElement(By.id("LastName"));
         String lastNameValue = "Dutescu";
         lastName.sendKeys(lastNameValue);
 
-        WebElement dayOfBirth = driver.findElement(By.name("DateOfBirthDay"));
+        WebElement dayOfBirth = getDriver().findElement(By.name("DateOfBirthDay"));
         Select dayDropdown = new Select(dayOfBirth);
         dayDropdown.selectByValue("24");
 
-        WebElement monthOfBirth = driver.findElement(By.name("DateOfBirthMonth"));
+        WebElement monthOfBirth = getDriver().findElement(By.name("DateOfBirthMonth"));
         Select monthDropdown = new Select(monthOfBirth);
         monthDropdown.selectByValue("11");
 
-        WebElement yearOfBirth = driver.findElement(By.name("DateOfBirthYear"));
+        WebElement yearOfBirth = getDriver().findElement(By.name("DateOfBirthYear"));
         Select yearDropdown = new Select(yearOfBirth);
         yearDropdown.selectByValue("1988");
 
-        WebElement email = driver.findElement(By.id("Email"));
+        WebElement email = getDriver().findElement(By.id("Email"));
         String emailValue = "dutescu_lilly@yahoo.com";
         email.sendKeys(emailValue);
 
-        WebElement company = driver.findElement(By.id("Company"));
+        WebElement company = getDriver().findElement(By.id("Company"));
         String companyValue = "IT School";
         company.sendKeys(companyValue);
 
-        WebElement selectNewsletter = driver.findElement(By.id("Newsletter"));
+        WebElement selectNewsletter = getDriver().findElement(By.id("Newsletter"));
         selectNewsletter.click();
 
-        WebElement password = driver.findElement(By.id("Password"));
+        WebElement password = getDriver().findElement(By.id("Password"));
         String passwordValue = "TestPassword24!";
         password.sendKeys(passwordValue);
 
-        WebElement confirmPassword = driver.findElement(By.id("ConfirmPassword"));
+        WebElement confirmPassword = getDriver().findElement(By.id("ConfirmPassword"));
         String confirmPasswordValue = "TestPassword24!";
         confirmPassword.sendKeys(confirmPasswordValue);
 
-        WebElement registerButton = driver.findElement(By.id("register-button"));
+        WebElement registerButton = getDriver().findElement(By.id("register-button"));
         registerButton.click();
 
-        WebElement error = driver.findElement(By.cssSelector(".message-error>ul>li"));
+        WebElement error = getDriver().findElement(By.cssSelector(".message-error>ul>li"));
         String expectedError = "The specified email already exists";
         String actualError = error.getText();
         Assert.assertEquals(actualError, expectedError);
