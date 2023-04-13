@@ -1,6 +1,7 @@
 package Tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -40,22 +41,56 @@ public class AddToCartTest {
         WebElement sortByMemory = driver.findElement(By.id("attribute-option-10"));
         sortByMemory.click();
 
+
         WebDriverWait WaitExplicit = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WaitExplicit.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".product-title>a")));
-        WaitExplicit.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".product-title>a")));
-        WebElement selectNotebookDetails = driver.findElement(By.cssSelector(".product-title>a"));
-        WaitExplicit.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(selectNotebookDetails)));
+        WaitExplicit.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(".product-title>a")))));
+
+        WebElement selectNotebookDetails = driver.findElement(By.cssSelector(".picture>a"));
         selectNotebookDetails.click();
 
-        //.picture>a
-        //.product-title>a
+        WebElement addNotebookToCart = driver.findElement(By.id("add-to-cart-button-5"));
+        addNotebookToCart.click();
 
-        WebElement addToCart = driver.findElement(By.className("button-2 product-box-add-to-cart-button"));
-        addToCart.click();
+        WebElement visitCart = driver.findElement(By.xpath("//a[text()='shopping cart']"));
+        visitCart.click();
 
+        WebElement continueShopping = driver.findElement(By.name("continueshopping"));
+        continueShopping.click();
 
-        //.details>div>div>button[1]
+        WebElement moveToElectronics = driver.findElement(By.xpath("//a[text()='Electronics ']"));
+        Actions secondActions = new Actions(driver);
+        secondActions.moveToElement(moveToElectronics).perform();
 
+        WebElement selectPhones = driver.findElement(By.xpath("//a[text()='Cell phones ']"));
+        selectPhones.click();
+
+        WebElement hoverSortBy = driver.findElement(By.id("products-orderby"));
+        Actions thirdActions = new Actions(driver);
+        thirdActions.moveToElement(hoverSortBy).perform();
+
+        WebElement selectSortBy = driver.findElement(By.xpath("//option[text()='Name: Z to A']"));
+        selectSortBy.click();
+
+        WebDriverWait WaitExplicit2 = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WaitExplicit2.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(driver.findElement(By.xpath("//a[@title='Show details for Nokia Lumia 1020']")))));
+
+        WebElement selectPhone = driver.findElement(By.xpath("//a[@title='Show details for Nokia Lumia 1020']"));
+        selectPhone.click();
+
+        WebElement addPhoneToCart = driver.findElement(By.id("add-to-cart-button-20"));
+        addPhoneToCart.click();
+
+        WebElement reVisitCart = driver.findElement(By.xpath("//a[text()='shopping cart']"));
+        reVisitCart.click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,2500)");
+
+        WebElement agreeTerms = driver.findElement(By.id("termsofservice"));
+        agreeTerms.click();
+
+        WebElement checkOut = driver.findElement(By.id("checkout"));
+        checkOut.click();
 
 
     }
