@@ -1,30 +1,16 @@
 package Tests;
 
+import SharedData.SharedData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class WishlistTest {
-    public WebDriver driver;
-    ChromeOptions chromeOptions = new ChromeOptions();
-
+public class WishlistTest extends SharedData {
 
     @Test
     public void MetodaTest(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://demo.nopcommerce.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        chromeOptions.addArguments("window-size=1200,1080");
-        chromeOptions.addArguments("--no-sandbox");
 
         WebElement wishlist = driver.findElement(By.className("wishlist-label"));
         wishlist.click();

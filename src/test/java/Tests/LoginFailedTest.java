@@ -1,5 +1,6 @@
 package Tests;
 
+import SharedData.SharedData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,20 +11,10 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginFailedTest {
-
-    public WebDriver driver;
-    ChromeOptions chromeOptions = new ChromeOptions();
+public class LoginFailedTest extends SharedData {
 
     @Test
     public void MetodaTest() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://demo.nopcommerce.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        chromeOptions.addArguments("window-size=1200,1080");
-        chromeOptions.addArguments("--no-sandbox");
 
         WebElement login = driver.findElement(By.className("ico-login"));
         login.click();

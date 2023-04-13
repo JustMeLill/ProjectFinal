@@ -1,29 +1,17 @@
 package Tests;
 
+import SharedData.SharedData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class RegisterTest {
-    public WebDriver driver;
-    ChromeOptions chromeOptions = new ChromeOptions();
+public class RegisterTest extends SharedData {
 
     @Test
     public void MetodaTest(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://demo.nopcommerce.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        chromeOptions.addArguments("window-size=1200,1080");
-        chromeOptions.addArguments("--no-sandbox");
+
 
         WebElement register = driver.findElement(By.className("ico-register"));
         register.click();
