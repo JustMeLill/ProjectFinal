@@ -1,83 +1,73 @@
 package Tests;
 
+import HelpMethods.ElementMethods;
 import SharedData.SharedData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class AddToCartTest extends SharedData {
     @Test
     public void MetodaTest(){
 
+        ElementMethods elementMethods = new ElementMethods(getDriver());
+
         WebElement moveToComputers = getDriver().findElement(By.xpath("//a[text()='Computers ']"));
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(moveToComputers).perform();
+        elementMethods.moveToElement(moveToComputers);
 
         WebElement selectNotebooks = getDriver().findElement(By.xpath("//a[text()='Notebooks ']"));
-        selectNotebooks.click();
+        elementMethods.clickElement(selectNotebooks);
 
         WebElement sortByCPUType = getDriver().findElement(By.id("attribute-option-7"));
-        sortByCPUType.click();
+        elementMethods.clickElement(sortByCPUType);
 
         WebElement sortByMemory = getDriver().findElement(By.id("attribute-option-10"));
-        sortByMemory.click();
+        elementMethods.clickElement(sortByMemory);
 
-
-        WebDriverWait WaitExplicit = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        WaitExplicit.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(getDriver().findElement(By.cssSelector(".product-title>a")))));
+        elementMethods.waitElementVisibleWithStaleness(getDriver().findElement(By.cssSelector(".picture>a")));
 
         WebElement selectNotebookDetails = getDriver().findElement(By.cssSelector(".picture>a"));
-        selectNotebookDetails.click();
+        elementMethods.clickElement(selectNotebookDetails);
 
         WebElement addNotebookToCart = getDriver().findElement(By.id("add-to-cart-button-5"));
-        addNotebookToCart.click();
+        elementMethods.clickElement(addNotebookToCart);
 
         WebElement visitCart = getDriver().findElement(By.xpath("//a[text()='shopping cart']"));
-        visitCart.click();
+        elementMethods.clickElement(visitCart);
 
         WebElement continueShopping = getDriver().findElement(By.name("continueshopping"));
-        continueShopping.click();
+        elementMethods.clickElement(continueShopping);
 
         WebElement moveToElectronics = getDriver().findElement(By.xpath("//a[text()='Electronics ']"));
-        Actions secondActions = new Actions(getDriver());
-        secondActions.moveToElement(moveToElectronics).perform();
+        elementMethods.moveToElement(moveToElectronics);
 
         WebElement selectPhones = getDriver().findElement(By.xpath("//a[text()='Cell phones ']"));
-        selectPhones.click();
+        elementMethods.clickElement(selectPhones);
 
         WebElement hoverSortBy = getDriver().findElement(By.id("products-orderby"));
-        Actions thirdActions = new Actions(getDriver());
-        thirdActions.moveToElement(hoverSortBy).perform();
+        elementMethods.moveToElement(hoverSortBy);
 
         WebElement selectSortBy = getDriver().findElement(By.xpath("//option[text()='Name: Z to A']"));
-        selectSortBy.click();
+        elementMethods.clickElement(selectSortBy);
 
-        WebDriverWait WaitExplicit2 = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        WaitExplicit2.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(getDriver().findElement(By.xpath("//a[@title='Show details for Nokia Lumia 1020']")))));
+        elementMethods.waitElementVisibleWithStaleness(getDriver().findElement(By.xpath("//a[@title='Show details for Nokia Lumia 1020']")));
 
         WebElement selectPhone = getDriver().findElement(By.xpath("//a[@title='Show details for Nokia Lumia 1020']"));
-        selectPhone.click();
+        elementMethods.clickElement(selectPhone);
 
         WebElement addPhoneToCart = getDriver().findElement(By.id("add-to-cart-button-20"));
-        addPhoneToCart.click();
+        elementMethods.clickElement(addPhoneToCart);
 
         WebElement reVisitCart = getDriver().findElement(By.xpath("//a[text()='shopping cart']"));
-        reVisitCart.click();
+        elementMethods.clickElement(reVisitCart);
 
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("window.scrollBy(0,2500)");
+        elementMethods.scrollByPixel(0, 500);
 
         WebElement agreeTerms = getDriver().findElement(By.id("termsofservice"));
-        agreeTerms.click();
+        elementMethods.clickElement(agreeTerms);
 
         WebElement checkOut = getDriver().findElement(By.id("checkout"));
-        checkOut.click();
+        elementMethods.clickElement(checkOut);
 
     }
 }

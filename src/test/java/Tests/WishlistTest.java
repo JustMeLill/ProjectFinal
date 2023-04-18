@@ -1,10 +1,9 @@
 package Tests;
 
+import HelpMethods.ElementMethods;
 import SharedData.SharedData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class WishlistTest extends SharedData {
@@ -12,42 +11,36 @@ public class WishlistTest extends SharedData {
     @Test
     public void MetodaTest(){
 
+        ElementMethods elementMethods = new ElementMethods(getDriver());
+
         WebElement wishlist = getDriver().findElement(By.className("wishlist-label"));
-        wishlist.click();
+        elementMethods.clickElement(wishlist);
 
         WebElement wishlistEmpty = getDriver().findElement(By.className("no-data"));
         String expectedMessage = "The wishlist is empty!";
-        String actualMessage = wishlistEmpty.getText();
-        Assert.assertEquals(actualMessage, expectedMessage);
+        elementMethods.validateElementText(wishlistEmpty, expectedMessage);
 
         WebElement openBooks = getDriver().findElement(By.xpath("//a[text()='Books ']"));
-        openBooks.click();
+        elementMethods.clickElement(openBooks);
 
         WebElement listOfBooks = getDriver().findElement(By.className("products-wrapper"));
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(listOfBooks).perform();
-
+        elementMethods.moveToElement(listOfBooks);
 
         WebElement openBook = getDriver().findElement(By.xpath("//a[@title='Show details for First Prize Pies']"));
-        openBook.click();
+        elementMethods.clickElement(openBook);
 
         WebElement addToWishlist = getDriver().findElement(By.id("add-to-wishlist-button-38"));
-        addToWishlist.click();
+        elementMethods.clickElement(addToWishlist);
 
         WebElement clickWishlist = getDriver().findElement(By.xpath("//a[text()='wishlist']"));
-        clickWishlist.click();
+        elementMethods.clickElement(clickWishlist);
 
         WebElement removeWishlistItem = getDriver().findElement(By.className("remove-btn"));
-        removeWishlistItem.click();
+        elementMethods.clickElement(removeWishlistItem);
 
         WebElement wishlistCleared = getDriver().findElement(By.className("no-data"));
         String expectedMessage2 = "The wishlist is empty!";
-        String actualMessage2 = wishlistCleared.getText();
-        Assert.assertEquals(actualMessage2, expectedMessage2);
-
-
+        elementMethods.validateElementText(wishlistCleared, expectedMessage2);
 
     }
-
-
 }
