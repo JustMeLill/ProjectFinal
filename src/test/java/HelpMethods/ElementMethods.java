@@ -1,9 +1,7 @@
 package HelpMethods;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import jdk.jfr.Timespan;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -31,9 +29,10 @@ public class ElementMethods {
     }
 
     public void waitElementVisibleWithStaleness (WebElement element){
-        WebDriverWait waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(10));
-        waitExplicit.until(ExpectedConditions.visibilityOf(element));
-        waitExplicit.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
+
     }
 
     public void fillElement (WebElement element, String value){
