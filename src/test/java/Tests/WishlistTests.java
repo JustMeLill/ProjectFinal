@@ -1,6 +1,6 @@
 package Tests;
 
-import PagesMethods.WishlistPageMethods;
+import Pages.WishlistPageMethods;
 import SharedData.SharedData;
 import org.testng.annotations.Test;
 

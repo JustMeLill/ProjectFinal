@@ -1,6 +1,6 @@
 package Tests;
 
-import PagesMethods.RegisterPageMethods;
+import Pages.RegisterPageMethods;
 import SharedData.SharedData;
 import org.testng.annotations.Test;
 

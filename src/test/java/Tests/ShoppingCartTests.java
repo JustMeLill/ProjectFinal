@@ -1,7 +1,7 @@
 package Tests;
 
 import HelpMethods.ElementMethods;
-import PagesMethods.CartPageMethods;
+import Pages.CartPageMethods;
 import SharedData.SharedData;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;

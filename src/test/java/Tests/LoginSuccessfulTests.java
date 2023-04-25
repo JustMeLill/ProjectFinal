@@ -1,7 +1,7 @@
 package Tests;
 
-import PagesMethods.LoginPageMethods;
-import PagesMethods.RegisterPageMethods;
+import Pages.LoginSuccessPageMethods;
+import Pages.RegisterPageMethods;
 import SharedData.SharedData;
 import org.testng.annotations.Test;
 
@@ -10,7 +10,7 @@ public class LoginSuccessfulTests extends SharedData {
     public void LoginSucceedsWithGoodCredentials () {
 
         RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
-        LoginPageMethods loginPageMethods = new LoginPageMethods(getDriver());
+        LoginSuccessPageMethods loginSuccessPageMethods = new LoginSuccessPageMethods(getDriver());
 
         //given
         registerPageMethods.performRegister();
@@ -19,10 +19,10 @@ public class LoginSuccessfulTests extends SharedData {
                 "IT School","TestPassword24!","TestPassword24!");
 
         // when
-        loginPageMethods.performLogin("dutescu_lilly@yahoo.com","TestPassword24!");
+        loginSuccessPageMethods.performLogin("dutescu_lilly@yahoo.com","TestPassword24!");
 
         // then
-        loginPageMethods.validateLogoutIsAvailable("Log out");
+        loginSuccessPageMethods.validateLogoutIsAvailable("Log out");
     }
 
 }

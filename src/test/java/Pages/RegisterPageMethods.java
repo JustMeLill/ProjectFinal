@@ -1,4 +1,4 @@
-package PagesMethods;
+package Pages;
 
 import HelpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
@@ -6,17 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegisterPageMethods {
-
-    private WebDriver driver;
-    public ElementMethods elementMethods;
+public class RegisterPageMethods extends BasePage {
 
     public RegisterPageMethods(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        elementMethods = new ElementMethods(driver);
+        super(driver);
     }
-
     @FindBy(className = "ico-register")
     private WebElement register;
 
@@ -58,6 +52,7 @@ public class RegisterPageMethods {
 
     @FindBy(css = ".message-error>ul>li")
     private WebElement error;
+
 
     public void performRegister (){
         elementMethods.clickElement(register);
