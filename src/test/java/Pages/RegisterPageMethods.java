@@ -8,9 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class RegisterPageMethods extends BasePage {
 
-    public RegisterPageMethods(WebDriver driver) {
-        super(driver);
-    }
     @FindBy(className = "ico-register")
     private WebElement register;
 
@@ -53,6 +50,10 @@ public class RegisterPageMethods extends BasePage {
     @FindBy(css = ".message-error>ul>li")
     private WebElement error;
 
+
+    public RegisterPageMethods(WebDriver driver) {
+        super(driver);
+    }
 
     public void performRegister (){
         elementMethods.clickElement(register);

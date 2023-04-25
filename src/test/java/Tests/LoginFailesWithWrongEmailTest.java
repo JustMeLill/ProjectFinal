@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 
 public class LoginFailesWithWrongEmailTest extends SharedData {
 
-    RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
-    LoginFailedPageMethods loginFailedPageMethods = new LoginFailedPageMethods(getDriver());
-
     @Test
     public void LoginFailsWithWrongEmail() {
+
+        RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
+        LoginFailedPageMethods loginFailedPageMethods = new LoginFailedPageMethods(getDriver());
 
         //given you have a registered account
         registerPageMethods.performRegister();

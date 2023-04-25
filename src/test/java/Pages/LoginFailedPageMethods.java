@@ -8,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginFailedPageMethods extends BasePage {
 
-    public LoginFailedPageMethods(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(className = "ico-login")
     private WebElement login;
 
@@ -25,6 +21,10 @@ public class LoginFailedPageMethods extends BasePage {
 
     @FindBy(className = "message-error")
     private WebElement loginFailedMessage;
+
+    public LoginFailedPageMethods(WebDriver driver) {
+        super(driver);
+    }
 
     public void performLogin (String emailLoginValue, String passwordLoginValue){
         elementMethods.clickElement(login);

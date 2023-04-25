@@ -8,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginSuccessPageMethods extends BasePage {
 
-    public LoginSuccessPageMethods(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(className = "ico-login")
     private WebElement login;
 
@@ -26,6 +22,9 @@ public class LoginSuccessPageMethods extends BasePage {
     @FindBy(className = "ico-logout")
     private WebElement logout;
 
+    public LoginSuccessPageMethods(WebDriver driver) {
+        super(driver);
+    }
 
 
     public void performLogin (String emailLoginValue, String passwordLoginValue){
