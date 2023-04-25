@@ -1,6 +1,7 @@
 package Pages;
 
 import HelpMethods.ElementMethods;
+import Objects.RegisterObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,27 +60,24 @@ public class RegisterPageMethods extends BasePage {
         elementMethods.clickElement(register);
     }
 
-    public void fillInRegisterData (String firstNameValue, String lastNameValue, String dayOfBirthValue,
-                                 String monthOfBirthValue, String yearOfBirthValue,
-                                 String emailValue, String companyValue,
-                                 String passwordValue, String confirmPasswordValue){
+    public void fillInRegisterData (RegisterObject registerObject){
         elementMethods.clickElement(selectGender);
-        elementMethods.fillElement(firstName, firstNameValue);
-        elementMethods.fillElement(lastName, lastNameValue);
-        elementMethods.selectElementByText(dayOfBirth, dayOfBirthValue);
-        elementMethods.selectElementByText(monthOfBirth, monthOfBirthValue);
-        elementMethods.selectElementByText(yearOfBirth, yearOfBirthValue);
-        elementMethods.fillElement(email, emailValue);
-        elementMethods.fillElement(company, companyValue);
+        elementMethods.fillElement(firstName, registerObject.getFirstNameValue());
+        elementMethods.fillElement(lastName, registerObject.getLastNameValue());
+        elementMethods.selectElementByText(dayOfBirth, registerObject.getDayOfBirthValue());
+        elementMethods.selectElementByText(monthOfBirth, registerObject.getMonthOfBirthValue());
+        elementMethods.selectElementByText(yearOfBirth, registerObject.getYearOfBirthValue());
+        elementMethods.fillElement(email, registerObject.getEmailValue());
+        elementMethods.fillElement(company, registerObject.getCompanyValue());
         elementMethods.clickElement(selectNewsletter);
-        elementMethods.fillElement(password, passwordValue);
-        elementMethods.fillElement(confirmPassword, confirmPasswordValue);
+        elementMethods.fillElement(password, registerObject.getPasswordValue());
+        elementMethods.fillElement(confirmPassword, registerObject.getConfirmPasswordValue());
         elementMethods.waitElementVisible(registerButton);
         elementMethods.clickElement(registerButton);
     }
 
-    public void proceedWithRegister (String expectedMessageRegister){
-       elementMethods.validateElementText(error, expectedMessageRegister);
+    public void proceedWithRegister (RegisterObject registerObject){
+       elementMethods.validateElementText(error, registerObject.getExpectedMessageRegister());
     }
 
 }

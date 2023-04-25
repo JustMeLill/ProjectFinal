@@ -16,7 +16,6 @@ public class SharedData {
     }
 
     ChromeOptions chromeOptions = new ChromeOptions();
-    @BeforeMethod
     public void Setup(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver.exe");
         driver = new ChromeDriver();
@@ -27,7 +26,6 @@ public class SharedData {
         chromeOptions.addArguments("--no-sandbox");
     }
 
-    @AfterMethod
     public void Clear(){
         driver.quit();
     }

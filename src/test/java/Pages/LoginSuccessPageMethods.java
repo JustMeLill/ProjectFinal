@@ -1,6 +1,7 @@
 package Pages;
 
 import HelpMethods.ElementMethods;
+import Objects.LoginSuccessObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,14 +28,14 @@ public class LoginSuccessPageMethods extends BasePage {
     }
 
 
-    public void performLogin (String emailLoginValue, String passwordLoginValue){
+    public void performLogin (LoginSuccessObject loginSuccessObject){
         elementMethods.clickElement(login);
-        elementMethods.fillElement(emailLogin, emailLoginValue);
-        elementMethods.fillElement(passwordLogin,passwordLoginValue);
+        elementMethods.fillElement(emailLogin, loginSuccessObject.getEmailLogin());
+        elementMethods.fillElement(passwordLogin,loginSuccessObject.getPasswordLogin());
         elementMethods.clickElement(loginButton);
     }
 
-    public void validateLogoutIsAvailable(String expectedText) {
-        elementMethods.validateElementText(logout, expectedText);
+    public void validateLogoutIsAvailable(LoginSuccessObject loginSuccessObject) {
+        elementMethods.validateElementText(logout, loginSuccessObject.getLogout());
     }
 }
