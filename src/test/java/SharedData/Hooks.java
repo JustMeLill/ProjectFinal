@@ -7,7 +7,6 @@ import com.aventstack.extentreports.model.Log;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.internal.TestResult;
 
 import java.util.ArrayList;
 import java.util.HashMap;

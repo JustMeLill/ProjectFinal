@@ -1,6 +1,7 @@
 package Pages;
 
 import HelpMethods.ElementMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -71,7 +72,7 @@ public class CartPageMethods {
         elementMethods.clickElement(selectNotebooks);
         elementMethods.clickElement(sortByCPUType);
         elementMethods.clickElement(sortByMemory);
-
+        elementMethods.waitElementVisibleWithStaleness(By.cssSelector(".picture>a"));
     }
 
     public void openNotebook (){
@@ -93,7 +94,7 @@ public class CartPageMethods {
         elementMethods.clickElement(selectPhones);
         elementMethods.moveToElement(hoverSortBy);
         elementMethods.clickElement(selectSortBy);
-
+        elementMethods.waitElementVisibleWithStaleness(By.xpath("//a[@title='Show details for Nokia Lumia 1020']"));
     }
 
     public void openPhone (){

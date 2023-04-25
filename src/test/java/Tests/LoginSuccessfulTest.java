@@ -1,5 +1,6 @@
 package Tests;
 
+import InputFile.PropertiesUtility;
 import Objects.LoginSuccessObject;
 import Objects.RegisterObject;
 import Pages.LoginSuccessPageMethods;
@@ -12,22 +13,19 @@ public class LoginSuccessfulTest extends Hooks {
     @Test
     public void LoginSucceedsWithGoodCredentials () {
 
-        RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
-        RegisterObject registerObject = new RegisterObject(TestData);
-
-        LoginSuccessPageMethods loginSuccessPageMethods = new LoginSuccessPageMethods(getDriver());
-        LoginSuccessObject loginSuccessObject = new LoginSuccessObject(TestData);
+        RegisterObject registerObject = new RegisterObject(new PropertiesUtility("RegisterTest").getAllData());
+        LoginSuccessObject loginSuccessObject = new LoginSuccessObject(new PropertiesUtility("LoginSuccessfulTest").getAllData());
 
 
         //given you have a registered account
+        RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
         registerPageMethods.performRegister();
         TestReport.AttachReport("pass", "The Register page was accessed.");
         registerPageMethods.fillInRegisterData(registerObject);
         TestReport.AttachReport("pass", "The Register data was inserted and the register button was clicked.");
-        registerPageMethods.proceedWithRegister(registerObject);
-        TestReport.AttachReport("pass", "The message - The specified email already exists - is displayed.");
 
         // when you perform login with correct credentials
+        LoginSuccessPageMethods loginSuccessPageMethods = new LoginSuccessPageMethods(getDriver());
         loginSuccessPageMethods.performLogin(loginSuccessObject);
         TestReport.AttachReport("pass", "The Login page was accessed, the login credentials were entered, and the login button was clicked");
 

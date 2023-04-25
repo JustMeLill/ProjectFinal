@@ -1,5 +1,6 @@
 package Tests;
 
+import InputFile.PropertiesUtility;
 import Objects.LoginFailsWithWrongEmailObject;
 import Objects.RegisterObject;
 import Pages.LoginFailedWithWrongEmailPageMethods;
@@ -12,20 +13,19 @@ public class LoginFailsWithWrongEmailTest extends Hooks {
     @Test
     public void LoginFailsWithWrongEmail() {
 
-        RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
-        LoginFailedWithWrongEmailPageMethods loginFailedWithWrongEmailPageMethods = new LoginFailedWithWrongEmailPageMethods(getDriver());
-        RegisterObject registerObject = new RegisterObject(TestData);
-        LoginFailsWithWrongEmailObject loginFailsWithWrongEmailObject = new LoginFailsWithWrongEmailObject(TestData);
+        RegisterObject registerObject = new RegisterObject(new PropertiesUtility("RegisterTest").getAllData());
+        LoginFailsWithWrongEmailObject loginFailsWithWrongEmailObject = new LoginFailsWithWrongEmailObject(new PropertiesUtility("LoginFailsWithWrongEmailTest").getAllData());
 
         //given you have a registered account
+        RegisterPageMethods registerPageMethods = new RegisterPageMethods(getDriver());
         registerPageMethods.performRegister();
         TestReport.AttachReport("pass", "The Register page was accessed.");
         registerPageMethods.fillInRegisterData(registerObject);
         TestReport.AttachReport("pass", "The Register data was inserted and the register button was clicked.");
-        registerPageMethods.proceedWithRegister(registerObject);
-        TestReport.AttachReport("pass", "The message - The specified email already exists - is displayed.");
+
 
         //when you go to the login page and fill in a wrong username and the correct password
+        LoginFailedWithWrongEmailPageMethods loginFailedWithWrongEmailPageMethods = new LoginFailedWithWrongEmailPageMethods(getDriver());
         loginFailedWithWrongEmailPageMethods.performLoginWithWrongEmail(loginFailsWithWrongEmailObject);
         TestReport.AttachReport("pass", "The Login page was accessed, the wrong email entered, and the login button was clicked");
 
